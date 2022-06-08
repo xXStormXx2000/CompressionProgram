@@ -36,8 +36,8 @@ namespace sca {
         thisFile.close();
     }
     CompressedCppCodeFile::CompressedCppCodeFile(const std::string& cccFileName) {
+        if (cccFileName.substr(this->file.find_last_of('.')) != ".ccc") throw;
         this->file = cccFileName;
-        if (this->file.substr(this->file.find_last_of('.')) != ".ccc") throw;
         unsigned char c;
         int size = 0, sizeOfTree = 0;
         std::string str, treeKey, treeElement;
