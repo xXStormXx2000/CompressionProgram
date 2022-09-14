@@ -8,6 +8,8 @@ namespace sca {
 		BinarySearchNode* branches[2] = { nullptr, nullptr };
 	public:
 		BinarySearchNode(int frequency = 0, std::string content = "");
+		BinarySearchNode(const BinarySearchNode&);
+		BinarySearchNode& operator=(const BinarySearchNode&);
 		~BinarySearchNode();
 		bool operator < (const BinarySearchNode& a) const { return frequency < a.frequency; }
 		bool operator > (const BinarySearchNode& a) const { return frequency > a.frequency; }

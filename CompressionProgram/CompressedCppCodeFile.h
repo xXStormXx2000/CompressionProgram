@@ -20,6 +20,8 @@ namespace sca {
 	public:
 		CompressedCppCodeFile(const std::vector<std::string>&, const std::string&);
 		CompressedCppCodeFile(const std::string&);
+		CompressedCppCodeFile(const CompressedCppCodeFile&);
+		CompressedCppCodeFile& operator=(const CompressedCppCodeFile&);
 		void decompress(std::string = "");
 		~CompressedCppCodeFile();
 		void showTree();

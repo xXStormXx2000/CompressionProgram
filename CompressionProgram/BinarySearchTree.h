@@ -20,6 +20,8 @@ namespace sca {
 		std::map<std::string, BinaryStream> bitMap;
 		BinarySearchTree(std::set<BinarySearchNode*, Compare>&);
 		BinarySearchTree(std::map<std::string, std::string>);
+		BinarySearchTree(const BinarySearchTree&);
+		BinarySearchTree& operator=(const BinarySearchTree&);
 		~BinarySearchTree();
 		BinaryStream getContentBits(std::string);
 		BinarySearchNode* getRoot() { return this->root; };

@@ -26,6 +26,14 @@ namespace sca {
 		this->root = new BinarySearchNode;
 		generateTreeFromMap(treeMap, "", this->root);
 	}
+	BinarySearchTree::BinarySearchTree(const BinarySearchTree& other) : bitMap(other.bitMap) {
+		this->root = new BinarySearchNode(*(other.root));
+	}
+	BinarySearchTree& BinarySearchTree::operator=(const BinarySearchTree& other) {
+		bitMap = other.bitMap;
+		this->root = new BinarySearchNode(*(other.root));
+		return *this;
+	}
 	void BinarySearchTree::generateTreeFromMap(std::map<std::string, std::string>& lookUpMap, std::string bit, BinarySearchNode* trunk) {
 		if (lookUpMap.find(bit) != lookUpMap.end()) {
 			trunk->setContent(lookUpMap[bit]);
@@ -45,7 +53,7 @@ namespace sca {
 			std::cout << bin << ": " << node->getContent() << '\n';
 		}
 		if (node->getBranch(0) != nullptr)showTree(node->getBranch(0), bin + "0");
-		if (node->getBranch(0) != nullptr)showTree(node->getBranch(1), bin + "1");
+		if (node->getBranch(1) != nullptr)showTree(node->getBranch(1), bin + "1");
 	}
 	std::string BinarySearchTree::getElementFromBinery(BinaryStream& bs) {
 		BinarySearchNode* node = this->root;

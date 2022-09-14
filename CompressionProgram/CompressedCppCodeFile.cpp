@@ -78,6 +78,14 @@ namespace sca {
         cccFile.close();
         this->tree = new BinarySearchTree(treeMap);
     }
+    CompressedCppCodeFile::CompressedCppCodeFile(const CompressedCppCodeFile& other) : file(other.file) {
+        this->tree = new BinarySearchTree(*other.tree);
+    }
+    CompressedCppCodeFile& CompressedCppCodeFile::operator=(const CompressedCppCodeFile& other) {
+        this->file = other.file;
+        this->tree = new BinarySearchTree(*other.tree);
+        return *this;
+    }
     void CompressedCppCodeFile::decompress(std::string fileLocation) {
         if (fileLocation.back() != '\\' && fileLocation.back() != '/') fileLocation += '\\';
         std::string fileName, str;
